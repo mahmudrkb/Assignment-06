@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment-06</title>
+
+    <!--  css  -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <!--  daisyUi -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- font  -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <!-- navbar  -->
+      <nav class="container mx-auto py-10 px-5">
+        <div class="grid grid-cols-2 md:grid-cols-3">
+          <div class="flex items-center justify-start">
+            <img class="md:h-full" src=".//images/logo.webp" alt="" />
+            <h2 class="font-bold text-xl md:text-3xl md:ml-3">Peddy</h2>
+          </div>
+          <div class="flex justify-center items-center">
+            <ul class="md:flex gap-2 md:gap-4 hidden">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+
+            <div>
+              <div class="flex justify-end items-center">
+                <div class="dropdown md:hidden">
+                  <div
+                    tabindex="0"
+                    role="button"
+                    class="btn btn-ghost btn-circle"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h7"
+                      />
+                    </svg>
+                  </div>
+                  <ul
+                    tabindex="0"
+                    class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 p-1 shadow"
+                  >
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Contact</a></li>
+                  </ul>
+                </div>
+                <div class="flex justify-end md:hidden">
+                  <img
+                    class="w-7 h-7 p-1 border rounded-full"
+                    src="https://img.icons8.com/?size=100&id=82751&format=png&color=000000"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="md:flex justify-end items-center hidden">
+            <div class="flex justify-end">
+              <img
+                class="w-7 h-7 p-1 border rounded-full"
+                src="https://img.icons8.com/?size=100&id=82751&format=png&color=000000"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- banner  -->
+      <section class="container mx-auto py-10 px-5">
+        <div class="space-y-3 text-center">
+          <h3 class="text-xl">Bringing Families Together ‍ 🔥</h3>
+          <h1 class="text-3xl md:text-5xl font-bold">
+            Your Path to Adoption <br />
+            Starts Here
+          </h1>
+          <div class="flex justify-center">
+            <p class="max-w-2xl">
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout. The
+              point of using Lorem Ipsum is that it has a.
+            </p>
+          </div>
+
+          <button
+            onclick="scrollMainSection()"
+            class="btn bg-cyan-900 text-white"
+          >
+            View More
+          </button>
+          <img class="mx-auto" src="./images/pet.webp" alt="" />
+        </div>
+      </section>
+    </header>
+
+    <main id="mainSection">
+      <section class="text-center container mx-auto py-10 px-5 space-y-10">
+        <div>
+          <h1 class="text-3xl md:text-5xl font-bold">Adopt Your Best Friend</h1>
+          <div class="flex justify-center">
+            <p class="max-w-2xl">
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout. The
+              point of using Lorem Ipsum is that it has a.
+            </p>
+          </div>
+        </div>
+
+        <!-- button  -->
+        <div
+          id="categoriesBtn"
+          onclick="loadSpinner()"
+          class="space-x-1 md:space-x-5 flex justify-center items-center"
+        ></div>
+        <span
+          id="loadingSpinner"
+          class="loading loading-dots loading-lg hidden mx-auto"
+        ></span>
+
+        <!-- sort by price  -->
+
+        <div class="flex justify-between items-center">
+          <h3 class="font-semibold text-xl">Best Deal For you</h3>
+          <button   onclick="loadSpinner()"
+            class="bg-teal-800 font-semibold text-white px-5 py-3 rounded-md"
+          >
+            Sort by Price
+          </button>
+        </div>
+
+        <!-- display all pets section -->
+
+        <div id="petsSection" class="grid grid-cols-3 md:grid-cols-4 gap-3">
+          <!-- div-1  -->
+          <div
+            id="allPetsSec"
+            class="col-span-2 md:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border rounded-md p-3 gap-3"
+          ></div>
+          <!-- div-2  -->
+          <div
+            id="likePetsSec "
+            class="border rounded-md p-3 grid md:grid-cols-2 gap-2 grid-flow-row auto-rows-max"
+          ></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- You can open the modal using ID.showModal() method -->
+    <button
+      id="showModalData"
+      class="btn hidden"
+      onclick="customModal.showModal()"
+    >
+      open modal
+    </button>
+
+    <dialog id="customModal" class="modal">
+      <div class="modal-box">
+        <div id="modal-content"></div>
+
+        <div class="modal-action justify-center w-full">
+          <form method="dialog">
+            <!-- if there is a button, it will close the modal -->
+            <button class="bg-teal-100 text-teal-800 rounded-md px-10 py-3">
+              Close
+            </button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- modal adopt  -->
+    <!-- Open the modal using ID.showModal() method -->
+    <button
+      id="adoptModalBtn"
+      class="btn hidden"
+      onclick="adoptModal.showModal()"
+    >
+      open modal
+    </button>
+    <dialog id="adoptModal" class="modal   ">
+      <div class="modal-box">
+        <div id="showModalContent" class="text-center">
+          <img
+            class="mx-auto"
+            src="https://img.icons8.com/?size=160&id=YLcBDJsEZ49a&format=png"
+            alt=""
+          />
+          <h3 class="font-bold text-2xl">Congratulations!</h3>
+
+          <p>The adoption process for your pet has officially begun</p>
+          <span class="font-bold text-2xl" id="showTime">3</span>
+        </div>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+
+        <button onclick=" closeModal()" id="closeTimeEnd">close</button>
+
+      </form>
+    </dialog>
+
+    <!-- footer 
+      -->
+
+    <footer>
+      <section class="bg-black">
+        <div
+          class="container mx-auto py-10 px-5 grid grid-cols-1 items-center sm:grid-cols-2 md:grid-cols-3 text-white p-10 space-y-3"
+        >
+          <!--  div-1 -->
+
+          <div class="block">
+            <div class="flex items-center justify-start">
+              <img class="md:h-full" src=".//images/logo.webp" alt="" />
+              <h2 class="font-bold text-xl md:text-3xl md:ml-3">Peddy</h2>
+            </div>
+            <div class="list-none">
+              <li><a href="#">Location: av. Washington 165, NY CA 54003</a></li>
+              <li><a href="#">Phone: +31 85 964 47 25</a></li>
+              <li><a href="#">Email: info@yourdomain.com</a></li>
+              <li><a href="#">Openings hours: 9.00 AM - 5.00 PM</a></li>
+            </div>
+
+            <div class="space-x-2">
+              <a href="#"><i class="fa-brands fa-facebook"></i></a>
+              <a href="#"><i class="fa-brands fa-youtube"></i></a>
+              <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+          <!-- div-2 -->
+
+          <div class="list-none">
+            <h6 class="text-xl font-semibold">Useful Links</h6>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Animals</a></li>
+            <li><a href="#">Foundation</a></li>
+            <li><a href="#">Contact</a></li>
+          </div>
+
+          <!-- div-3 -->
+          <div class="block">
+            <form>
+              <h6 class="text-xl font-semibold">Drop a Message</h6>
+              <div class="space-y-3">
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Enter Your Email"
+                    class="input max-w-lg bg-slate-500 text-white"
+                  />
+                </div>
+                <button class="btn max-w-lg bg-cyan-700 text-white">
+                  Subscribe
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </footer>
+
+    <script src="./js/index.js"></script>
+  </body>
+</html>
